@@ -31,6 +31,7 @@ class StatusRoom extends Component
 
         $sRoom->save();
         $this->emit('showAlert', "وضعیت اتاق با موفقیت اضافه شد.");
+        $this->update=Room_status::all();
 
         $this->resetInput();
     }
@@ -51,6 +52,8 @@ class StatusRoom extends Component
         ]);
 
         $this->emit('showAlert', "ویرایش وضعیت اتاق با موفقیت انجام شد.");
+            $this->update=Room_status::all();
+
         // return redirect('/panel/rooms/roomType');
       }
    }

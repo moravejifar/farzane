@@ -7,6 +7,7 @@ use App\Models\User;
 class Index2 extends Component
 {
     public   $newUsers;
+
     // public   $userToEdit;
     // public function editUser($id)
     // {
@@ -18,14 +19,17 @@ class Index2 extends Component
 
     public function deleteUser($id)
     {
-
+        // dd(User::where('id',$id));
         User::where('id',$id)->delete();
-        $this->newUsers= $this->newUsers->where('id', '!=', $id);
+        // dd($this->newUsers);
+        $this->newUsers= $this->newUsers->where('id', '!=', $id)->values();
         // $this->emit('showAlert', "کاربر با موفقیت حذف شد.");
         // $this->session()->flash('status', 'کاربر به درستی ایجاد شد!');
-        return redirect()->route('users');
+        $this->emit('showAlert', "حذف کاربر با موفقیت انجام شد.");
 
     }
+
+
 
     public function mount(){
         $this->newUsers=User::all();

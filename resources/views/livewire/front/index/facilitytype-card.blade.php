@@ -26,6 +26,6 @@
 
     </div>
     <div class="services-title">
-        <a href="/facility-card/{{$facility_type->facilitytype_id}}" class=" cursor_pointer_shadow rounded_5px-3"> <h2>{{$facility_type->facility_type_name}}-مشاهده جزئیات</h2></a>
+        <a href="/facility-card/{{$facility_type->facilitytype_id}}" class=" cursor_pointer_shadow rounded_5px-3"><h4> {{$facility_type->facility_type_name}}-مشاهده جزئیات</h4></a>
      </div>
 </div>

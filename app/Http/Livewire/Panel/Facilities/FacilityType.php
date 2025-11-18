@@ -24,7 +24,7 @@ class FacilityType extends Component
     ];
     protected $rules=[
         // 'data.facilitytype_id'=>'required',
-        'facility_image'=>'image| max:2024',
+        // 'facility_image'=>'image| max:2024',
         'data.facility_type_name'=>'required|min:3|unique:Facility_type,facilitytype_id',
         'data.facility_loc'=>'required',
         'data.alt_image'=>'required',
@@ -39,7 +39,7 @@ class FacilityType extends Component
         $this->validate();
         // dd('1');
         $facility_image=$this->facility_image;
-        $facility_image=$this->facility_image;
+        // $facility_image=$this->facility_image;
 
         if (is_file($facility_image))
         {    $this->isUploading="true";
@@ -59,6 +59,7 @@ class FacilityType extends Component
 
         $tfacility->save();
         $this->emit('showAlert', "نوع تسهیلات با موفقیت اضافه شد.");
+        $this->update=Facility_type::all();
 
         $this->resetInput();
     }

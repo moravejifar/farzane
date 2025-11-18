@@ -23,6 +23,7 @@ class Room extends Component
         "description"=>"",
 
     ];
+
     protected function rules()
     {
          return [
@@ -51,7 +52,8 @@ class Room extends Component
         $CRoom->description=$this->data['description'];
         $CRoom->save();
         $this->emit('showAlert', " اتاق با موفقیت اضافه شد.");
-
+       $this->roomname=ModelRooms::all();
+        // dd( $this->roomname);
         // $this->resetInput();
     }
 

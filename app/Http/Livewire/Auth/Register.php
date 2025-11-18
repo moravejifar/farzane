@@ -32,6 +32,8 @@ class Register extends Component
     // $table->rememberToken();
     // $table->timestamps();
     // $table->boolean('policy');
+   
+
     public function handleRegister()
     {
         $this->validate([

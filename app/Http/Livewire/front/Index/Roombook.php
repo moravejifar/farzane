@@ -8,6 +8,7 @@ class Roombook extends Component
 {
     public  $singleroom;
     public  $roomtype_id;
+    public  $countroom;
 
     public function mount($roomtype_id)
 
@@ -15,8 +16,11 @@ class Roombook extends Component
 
         // $this->room=Room::find($roomtype_id);
         $this->roomtype_id=$roomtype_id;
+        // $result = mysqli_query($conn, "SELECT * FROM users WHERE status='active'");
+// $count = mysqli_num_rows($result);
 
-
+    $this->countroom =count($this->singleroom);
+    // dd( $this->countroom);
     }
     public function render()
     {

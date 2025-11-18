@@ -12,6 +12,7 @@ class RoomType extends Component
     public  $room_image,$selected_id,$update;
     public $isUpdating=false;
     public $isUploading=false;
+    // public $troom_Arr;
     public $data=[
         "id"=>"",
         "room_name"=>"",
@@ -26,8 +27,8 @@ class RoomType extends Component
     ];
     protected $rules=[
         // 'id'=>'required',
-        'room_image'=>'image| max:2024',
-        'data.room_name'=>'required|min:3|unique:room_type,id',
+        // 'room_image'=>'image| max:2024',
+        'data.room_name'=>'required|min:3|unique:room_type,room_name',
         'data.max_quest'=>'required',
         'data.alt_image'=>'required',
         'data.room_size'=>'required',
@@ -40,9 +41,8 @@ class RoomType extends Component
     {
         $this->validate();
         $room_image=$this->room_image;
-        $room_image=$this->room_image;
 
-        if (is_file($room_image))
+        if (isset($room_image))
         {    $this->isUploading="true";
              $room_image=$this->room_image->store('public/images/room_image');
         }
@@ -54,17 +54,22 @@ class RoomType extends Component
         $tRoom->max_quest=$this->data['max_quest'];
         $tRoom->alt_image=$this->data['alt_image'];
         $tRoom->room_size=$this->data['room_size'];
-        // $tRoom->room_image=$this->room_image;
+        $tRoom->room_image=$this->room_image;
         $tRoom->room_priceusd=$this->data['room_priceusd'];
         $tRoom->description=$this->data['description'];
+
     if ($this->isUploading){
         $tRoom->room_image="/storage/images/room_image/". explode("/", $room_image)[3];}
     else {$tRoom->room_image="/storage/images/room_image/1.jpg";}
 
         $tRoom->save();
+
         $this->emit('showAlert', "نوع اتاق با موفقیت اضافه شد.");
+        // $this->$troom_Arr=Room_type::where('id',$this->data['id'])->get();
 
         $this->resetInput();
+        $this->update=Room_type::all();
+
     }
 
     public  function handleUpdate()

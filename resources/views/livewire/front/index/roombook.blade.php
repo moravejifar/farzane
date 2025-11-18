@@ -32,7 +32,8 @@
                      {{-- {{$roomtype_id}} --}}
                     {{-- {{$singleroom->roomtype_id}}
                      <h2> {{$roomtype_id }} <span>اتاق های نوع </span></h2> --}}
-                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                     
+                     <p>برای این نوع اتاق  {{$countroom}} مورد یافت شده است.</p>
                     {{-- {{ dd ($singleroom)}} --}}
                     {{-- {{ dd ($roomtype_id)}} --}}
                     </div>

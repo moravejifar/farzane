@@ -5,7 +5,7 @@
     </x-slot>
 
     <!--main content start-->
-    <div class="col-sm-9">
+    <div class="col-sm-8">
         <section class="panel">
             <header class="panel-heading">
                 جدول دسته بندی
@@ -19,7 +19,7 @@
                         <th class="col-lg-1" >تعداد تخت</th>
                         <th class="col-lg-1">قیمت اتاق</th>
                         {{-- <th>توضیحات</th> --}}
-                        <th class="col-lg-3">کپشن تصویر</th>
+                        <th class="col-lg-2">کپشن تصویر</th>
                         {{-- <th class="col-lg-2">تصویر</th> --}}
                         <th class="col-lg-1">عملیات</th>
                     </tr>
@@ -56,6 +56,7 @@
                         @include('livewire.panel.rooms.update-troom')
                     @else
                         @include('livewire.panel.rooms.create-troom')
+                        {{-- @include('livewire.panel.rooms.room-image-manager') --}}
                     @endif
 
 

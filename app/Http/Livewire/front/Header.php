@@ -9,6 +9,11 @@ class Header extends Component
 {
     // protected $listeners = ['refreshHeader' => '$refresh'];
     public $char='';
+
+    public function doSearch()
+{
+    return redirect('/search/0/' . $this->char);
+}
     // public $issearching=true;
     public function mount(){
         if ($this->char==''){

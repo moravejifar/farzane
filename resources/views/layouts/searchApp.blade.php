@@ -77,8 +77,15 @@
     <script src=" {{ asset('/Admin/js/plugins.js') }}"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src=" {{ asset('/Admin/js/main.js') }}"></script>
+    <script src=" {{ asset('/Admin/script.js') }}"></script>
 
 
     @livewireScripts
+
+
+
+
+
+
 
 </body>

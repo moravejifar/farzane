@@ -1,7 +1,7 @@
 {{-- <div class="row">
     <div class="col-lg-12">
        <section class="panel"> --}}
-        <div class="col-sm-3">
+        <div class="col-sm-4">
 
             <section class="panel">
                 <header class="panel-heading">

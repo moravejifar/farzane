@@ -28,6 +28,8 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'local'=> 'fa',
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -161,7 +163,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        morilog\Jalali\JalaliServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -229,7 +231,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'jDate' => Morilog\Jalali\Facades\jDate::class,
 
     ],
 

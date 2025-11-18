@@ -5,10 +5,10 @@
     </x-slot>
 
     <!--main content start-->
-    <div class="col-sm-9">
+    <div class="col-sm-8">
         <section class="panel">
             <header class="panel-heading">
-                جدول وضعیت اتاق ها
+                جدول تعریف وضعیت اتاق ها
             </header>
             <table class="table table-striped" style="width: 25cm; line-height:50px;">
                 <thead>

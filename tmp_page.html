@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title> Royal - لاگین</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/Auth/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="http://127.0.0.1:8000/Auth/css/style.css">
+    <!-- Livewire Styles -->
+<style >
+    [wire\:loading], [wire\:loading\.delay], [wire\:loading\.inline-block], [wire\:loading\.inline], [wire\:loading\.block], [wire\:loading\.flex], [wire\:loading\.table], [wire\:loading\.grid], [wire\:loading\.inline-flex] {
+        display: none;
+    }
+
+    [wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {
+        display:none;
+    }
+
+    [wire\:offline] {
+        display: none;
+    }
+
+    [wire\:dirty]:not(textarea):not(input):not(select) {
+        display: none;
+    }
+
+    input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {
+        animation-duration: 50000s;
+        animation-name: livewireautofill;
+    }
+
+    @keyframes livewireautofill { from {} }
+</style>
+</head>
+<body dir="rtl">
+
+    
+
+    <div wire:id="pGKN5JvM2ppFAk7w04Pa" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;pGKN5JvM2ppFAk7w04Pa&quot;,&quot;name&quot;:&quot;auth.login&quot;,&quot;locale&quot;:&quot;fa&quot;,&quot;path&quot;:&quot;login&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;d99b3c74&quot;,&quot;data&quot;:{&quot;data&quot;:{&quot;email&quot;:&quot;&quot;,&quot;password&quot;:&quot;&quot;,&quot;remember&quot;:false}},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;c36de2ebbfeb10258c9adfcaadf783e32ad0b3e440184926bcf0d05432dd2376&quot;}}" class="main">
+   <!-- Sing in  Form -->
+   <section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="http://127.0.0.1:8000/Auth/images/signin-image.jpg" alt="sing up image"></figure>
+                <a href="#" class="signup-image-link">ورود</a>
+            </div>
+
+            <div class="signin-form">
+                <h2 class="form-title">فرم ورود</h2>
+                <form method="POST" class="register-form" id="login-form">
+                    <div class="form-group">
+                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="your_name" id="your_name" placeholder="ایمیل" wire:model="data.email"/>
+                    </div>
+                                        <div class="form-group">
+                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="password" name="your_pass" id="your_pass" placeholder="کلمه عبور" wire:model="data.password"/>
+                    </div>
+                                        <div class="form-group">
+                        <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" wire:model="data.remember"/>
+                        <label for="remember-me" class="label-agree-term"><span><span></span></span>مرا به خاطر بسپار</label>
+                    </div>
+                    
+                   
+                  <div class="form-group">
+                    <input type="button" name="signup" id="signup" class="form-submit" value="ورود" wire:click="login"/>
+                </div>
+                    
+                        
+                    
+                </form>
+                <div class="social-login">
+                    <span class="social-label">یا ورود با </span>
+                    <ul class="socials">
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+
+<!-- Livewire Component wire-end:pGKN5JvM2ppFAk7w04Pa -->
+
+    
+
+    <!-- JS -->
+    <script src=" http://127.0.0.1:8000/Auth/vendor/jquery/jquery.min.js"></script>
+    <script src="http://127.0.0.1:8000/Auth/js/main.js"></script>
+    <!-- Livewire Scripts -->
+
+<script src="/livewire/livewire.js?id=9a36ebbddb8dd0aa91b1" data-turbo-eval="false" data-turbolinks-eval="false" ></script>
+<script data-turbo-eval="false" data-turbolinks-eval="false" >
+    if (window.livewire) {
+	    console.warn('Livewire: It looks like Livewire\'s @livewireScripts JavaScript assets have already been loaded. Make sure you aren\'t loading them twice.')
+	}
+
+    window.livewire = new Livewire();
+    window.livewire.devTools(true);
+    window.Livewire = window.livewire;
+    window.livewire_app_url = '';
+    window.livewire_token = 'TPXUXV6ufAeSFLyoWayo7p0VkLwIUR8hseoBKOJx';
+
+	/* Make sure Livewire loads first. */
+	if (window.Alpine) {
+	    /* Defer showing the warning so it doesn't get buried under downstream errors. */
+	    document.addEventListener("DOMContentLoaded", function () {
+	        setTimeout(function() {
+	            console.warn("Livewire: It looks like AlpineJS has already been loaded. Make sure Livewire\'s scripts are loaded before Alpine.\\n\\n Reference docs for more info: http://laravel-livewire.com/docs/alpine-js")
+	        })
+	    });
+	}
+
+	/* Make Alpine wait until Livewire is finished rendering to do its thing. */
+    window.deferLoadingAlpine = function (callback) {
+        window.addEventListener('livewire:load', function () {
+            callback();
+        });
+    };
+
+    let started = false;
+
+    window.addEventListener('alpine:initializing', function () {
+        if (! started) {
+            window.livewire.start();
+
+            started = true;
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (! started) {
+            window.livewire.start();
+
+            started = true;
+        }
+    });
+</script>
+
+</body>
+

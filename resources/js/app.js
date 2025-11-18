@@ -13,3 +13,7 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+var turbolinks = require("turbolinks")
+turbolinks.start();
+ 

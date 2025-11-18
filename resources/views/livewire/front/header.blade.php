@@ -57,7 +57,7 @@
                                                 </li>
                                                 {{-- </div> --}}
 
-                                                {{-- <button type="submit">ثبت نام</button> --}}
+                                                {{-- type="submit">ثبت نام</button>  --}}
                                                 {{-- <div class=""> --}}
                                                 <li class="mx-3 cursor_pointer_text_shadow font_1_1">
                                                     <a href="/register">ثبت نام</a>
@@ -116,41 +116,21 @@
 
 
 
-                                <div class="searchbox">
-                                    {{-- <input
-                                     type="text"
-                                     class="nosubmit"
-                                     placeholder="جستجو..."
-                                     wire:model.debounce.1000ms="char"
-                                      > --}}
+                                <div  class="searchbox">
 
-                                      {{-- <input type="text" class="form-control mx-2" placeholder="...جستجو"  wire:model.debounce.1000ms="char">
+                                                    <form wire:submit.prevent="doSearch" class="d-flex">
 
-                                                    <a href="/search/0/{{ $char }}" class=" mt-1">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-danger" type="button" title="Refresh page">
-                                                                <span class="fas fa-sync-alt">جستجو</span>
-                                                            </button>
-                                                        </span>
-                                                    </a> --}}
-                                                    <form class="d-flex">
-                                                        <input class="form-control me-2" type="text" placeholder="Search">
-                                                        <a href="/search/0/{{ $char }}" class=" mt-1"></a>
-                                                        <button class="btn btn-primary" type="button">Search</button>
+                                                        <div class="col-md-9 col-sm-9 col-xs-12" >
+                                                        <input class="form-control me-2 " type="text" placeholder="Search"
+                                                                   wire:model.live="char"
+                                                                    />
+                                                        {{-- <a href="/search/0/{{ $char }}" class=" mt-1"></a> --}}
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-3 col-xs-12" >
+                                                        <button class="btn btn-primary " type="button" style="border-radius: 4px;" wire:keydown.enter="doSearch">Search</button>
+                                                        </div>
+
                                                     </form>
-
-                                    {{-- <i class="fa fa-search"></i> --}}
-                                    {{-- <a href="/search/0/{{ $char }}" >{{ $char }}</a> --}}
-
-                                    {{-- @php --}}
-                                    {{-- <div> --}}
-                                    {{-- @if ($char!=='')
-                                     @php
-                                        $issearching='True';
-                                      @endphp
-                                   @endif --}}
-                                    {{-- </div> --}}
-                                    {{-- @endphp --}}
 
                                 </div>
                             </div>

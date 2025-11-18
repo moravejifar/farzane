@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Front\Index;
+namespace App\Http\Livewire\front\Index;
 
 use Livewire\Component;
 use App\Models\Facility_type;
@@ -8,20 +8,24 @@ use App\Models\Room_type;
 
 class Search extends Component
 {
-public $newRooms;
-public $newFacility_type;
-public $newFacility;
-public $results1;
-public $results2;
-public $results3;
+    public $newRooms;
+    public $newFacility_type;
+    public $newFacility;
+    public $results1;
+    public $results2;
+    public $results3;
+    public  $countresults1;
+    public  $countresults2;
+    public  $countresults3;
 
-public $categories;
-public $catId;
-public $char="";
-// public $issearching=false;
+    public $categories;
+    public $catId;
+    public $char = "";
+    // public $issearching=false;
 
 
-    public function mount($catId,$char=""){
+    public function mount($catId, $char = "")
+    {
         // dd($catId,$char);
         $this->newRooms = Room_type::all();
         $this->newFacility_type = Facility_type::all();
@@ -34,27 +38,32 @@ public $char="";
     public function render()
     {
 
-        if($this->catId == 0) {
+        if ($this->catId == 0) {
 
-            $result = Room_type::where('room_name' , 'like' , '%'.$this->char.'%')
-            ->orWhere('max_quest' , 'like' , '%'.$this->char.'%')
-            ->orWhere('alt_image' , 'like' , '%'.$this->char.'%')
-            ->orWhere('room_size' , 'like' , '%'.$this->char.'%')
-            ->orWhere('description' , 'like' , '%'.$this->char.'%')
-            ->get();
+            $result = Room_type::where('room_name', 'like', '%' . $this->char . '%')
+                ->orWhere('max_quest', 'like', '%' . $this->char . '%')
+                ->orWhere('alt_image', 'like', '%' . $this->char . '%')
+                ->orWhere('room_size', 'like', '%' . $this->char . '%')
+                ->orWhere('description', 'like', '%' . $this->char . '%')
+                ->get();
             // ->paginate(8);
             $this->results1 = $result;
+            $this->countresults1 = count($this->results1);
+            // dd($this->countresults1);
             // $this->issearching=true;
 
             // dd($this->results);
-            $resultf = Facility_type::where('facility_type_name' , 'like' , '%'.$this->char.'%')
-            ->orWhere('facility_loc' , 'like' , '%'.$this->char.'%')
-            ->orWhere('alt_image' , 'like' , '%'.$this->char.'%')
-            ->orWhere('facility_rank' , 'like' , '%'.$this->char.'%')
-            ->orWhere('description' , 'like' , '%'.$this->char.'%')
-            ->get();
+            $resultf = Facility_type::where('facility_type_name', 'like', '%' . $this->char . '%')
+                ->orWhere('facility_loc', 'like', '%' . $this->char . '%')
+                ->orWhere('alt_image', 'like', '%' . $this->char . '%')
+                ->orWhere('facility_rank', 'like', '%' . $this->char . '%')
+                ->orWhere('description', 'like', '%' . $this->char . '%')
+                ->get();
             // ->paginate(8);
             $this->results2 = $resultf;
+            $this->countresults2 = count($this->results2);
+            // dd($this->countresults2);
+
             // $this->issearching=true;
             // if (is_object($this->results2))
             // {
@@ -64,61 +73,60 @@ public $char="";
 
             // dd($this->results2);
 
-        } else{
+        } else {
 
             $result = Room_type::where([
-                ['id' , $this->catId],
-                ['room_name' , 'like' , '%'.$this->char.'%'],
+                ['id', $this->catId],
+                ['room_name', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['id' , $this->catId],
-                ['alt_image' , 'like' , '%'.$this->char.'%'],
+                ['id', $this->catId],
+                ['alt_image', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['id' , $this->catId],
-                ['description' , 'like' , '%'.$this->char.'%'],
+                ['id', $this->catId],
+                ['description', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['id' , $this->catId],
-                ['room_size' , 'like' , '%'.$this->char.'%'],
+                ['id', $this->catId],
+                ['room_size', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['id' , $this->catId],
-                ['max_quest' , 'like' , '%'.$this->char.'%'],
+                ['id', $this->catId],
+                ['max_quest', 'like', '%' . $this->char . '%'],
             ])->get();
             // ])->paginate(8);
 
             $this->results1 = $result;
+            $this->countresults1 = count($this->results1);
+            dd($this->countresults1);
             // $this->issearching=true;
 
             $resultf = Facility_type::where([
-                ['facilitytype_id' , $this->catId],
-                ['facility_type_name' , 'like' , '%'.$this->char.'%'],
+                ['facilitytype_id', $this->catId],
+                ['facility_type_name', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['facilitytype_id' , $this->catId],
-                ['facility_loc' , 'like' , '%'.$this->char.'%'],
+                ['facilitytype_id', $this->catId],
+                ['facility_loc', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['Facilitytype_id' , $this->catId],
-                ['alt_image' , 'like' , '%'.$this->char.'%'],
+                ['Facilitytype_id', $this->catId],
+                ['alt_image', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['facilitytype_id' , $this->catId],
-                ['description' , 'like' , '%'.$this->char.'%'],
+                ['facilitytype_id', $this->catId],
+                ['description', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['facilitytype_id' , $this->catId],
-                ['facility_rank' , 'like' , '%'.$this->char.'%'],
+                ['facilitytype_id', $this->catId],
+                ['facility_rank', 'like', '%' . $this->char . '%'],
             ])->get();
             // ])->paginate(8);
 
             $this->results2 = $resultf;
+            $this->countresults2 = count($this->results2);
             // $this->issearching=true;
 
-   }
+        }
 
 
 
 
         return view('livewire.front.index.search')
-        ->layout('layouts.searchApp');
+            ->layout('layouts.searchApp');
         // return view('livewire.front.index.search', ['rooms' => $rooms]);
     }
-
 }
-
-
-

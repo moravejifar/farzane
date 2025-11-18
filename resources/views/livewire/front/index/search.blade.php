@@ -18,82 +18,47 @@
 
                 </header>
                 <div class="panel-body">
-                    <div class="form">
+                    <div class="section-title mb-75 center text-center">
+                        <h2><span>موارد یافت شده</span></h2>
+                        {{-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p> --}}
+                    </div>
+
+                    <div class="col-12 text-right">
+                        <h4 class="pt-4 pb-1 text-info">انواع اتاق</h4>
+                        <p>درانوع اتاق {{ $countresults1 }} مورد برای این جستجو یافت شده است.</p>
+
+                        {{-- <p>{{ $countresults1 }}مورد در انوع داده یافت شد </p> --}}
+                        <hr class="bg-light w-25 h_0_5 m-0 rounded_5">
+                    </div>
+
+                    <div class="our-room-show">
+                        <div class="row">
+                            <div class="our-room-list owl-pagination">
+                                <div class="single-room-sapce">
+
+                                    @foreach ($results1 as $result)
+                                        <livewire:front.index.search-card :results1="$result">
+                                    @endforeach
+                                </div>
 
 
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-12 text-right">
+                        <h4 class="pt-4 pb-1 text-info">انواع تسهیلات</h4>
+                        <p class="pt-4 pb-1 text-info"> مورد در انواع تحصیلات یافت شد{{ $countresults2 }} </p>
 
-    <div id="searchedArticles" class="row justify-content-center col-12 m-auto px-0">
+                        <hr class="bg-light w-25 h_0_5 m-0 rounded_5">
+                    </div>
 
-      {{-- <div class="col-12 row justify-content-center align-items-center mt-3 py-2">
+                    @foreach ($results2 as $result)
+                        <livewire:front.index.searchfa-card :results2="$result">
+                    @endforeach
 
-        <div class="form-group ">
-            <div class="col-lg-2">
-            <label for="tittle" class="control-label .col-lg-4">عنوان را وارد کن</label>
-            </div>
-
-            <div class="col-lg-2">
-          <input
-            type="text"
-            class="form-control rounded_5 placeholder_gray shadow-sm h_2_5"
-            placeholder="عنوان رو وارد کن"
-            wire:model.debounce.1000ms="char"
-          />
-          {{-- <a href="/search.html" class="fas fa-search search_btn"></a> --}}
-
-            {{-- </div>
-           <div class="col-lg-2">
-             <select name="" id="" class="rounded_5 outline_0 h_2_5 border-0 form-control" wire:model="catId">
-            <option value="0">انتخاب بر اساس نوع</option> --}}
-            {{-- @foreach ($categories as $cat)
-            <option value="{{$cat->id}}">{{$cat->title}}</option>
-            @endforeach --}}
-             {{-- </select> --}}
-           {{-- </div> --}}
-        {{-- </div> --}}
-      {{-- </div> --}}
-
-     </div>
-
-      <div class="col-12 text-right">
-        <h4 class="pt-4 pb-1 text-info">موارد یافت شده</h4>
-        <hr class="bg-light w-25 h_0_5 m-0 rounded_5">
-      </div>
-
-        {{-- <div class="col-12 text-right">
-            <h4 class="pt-4 pb-1 text-info">انواع اتاقها</h4>
-            <hr class="bg-light w-25 h_0_5 m-0 rounded_5">
-          </div> --}}
-
-
-        @foreach ($results1 as $result)
-        <livewire:front.index.search-card :results1="$result">
-        {{-- <livewire:front.index.search-card :results="$result" :key="$results->id"> --}}
-        @endforeach
-
-        {{-- <div class="col-12 text-right">
-            <h4 class="pt-4 pb-1 text-info">انواع تسهیلات</h4>
-            <hr class="bg-light w-25 h_0_5 m-0 rounded_5">
-          </div> --}}
-
-        @foreach ($results2 as $result)
-        <livewire:front.index.searchfa-card :results2="$result">
-        {{-- <livewire:front.index.search-card :results="$result" :key="$results->id"> --}}
-        @endforeach
-
-        {{-- {{$results->links('livewire.utils.pagination-links')}} --}}
-
-      </div>
+                </div>
+            </section>
+        </div>
     </div>
-    </div>
-</section>
-</div>
-</div>
-</div>
-</div>
-
-  </main>
-
-
-
-
+</main>

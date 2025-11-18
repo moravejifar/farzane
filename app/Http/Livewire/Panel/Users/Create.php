@@ -25,7 +25,7 @@ class Create extends Component
         "policy"=>false
     ];
     protected $rules=[
-        'user_image'=>'image| max:1024',
+        // 'user_image'=>'image| max:2024',
         // 'data.id'=>'required',
         'data.name'=>'required|min:3',
         'data.lastname'=>'required',
@@ -41,11 +41,15 @@ class Create extends Component
     public function Created()
 {
     $this->validate();
+    //  dd($this->user_image);
     $user_image=$this->user_image;
-
-    if (is_file($user_image))
-    {    $this->isUploading="true";
+//  dd($this->user_image);
+    if (isset($user_image))
+    {
+         $this->isUploading="true";
+        // dd($this->isUploading);
          $user_image=$this->user_image->store('public/images/user_image');
+        //   dd($this->user_image);
     }
 //    dd($this->user_image);
         $user=new User;
@@ -56,21 +60,28 @@ class Create extends Component
         $user->password=Hash::make($this->data['password']);
         // $user->bio=$this->data['bio'];
         $user->gender=$this->data['gender'];
+//    dd($this->isUploading);
+
     if ($this->isUploading){ $user->user_image="/storage/images/user_image/". explode("/", $user_image)[3];}
     else {$user->user_image='/storage/images/user_image/1.jpg';}
         $user->news=$this->data['news'];
         $user->policy=$this->data['policy'];
         $user->save();
-        $this->emit('showAlert', "کاربر با موفقیت اضافه شد.");
+    // notify parent (when embedded) to refresh list and show alert
+    $this->emitUp('userSaved');
+    $this->emitUp('showAlert', "کاربر با موفقیت اضافه شد.");
     }
+        public function newuser()
+{
+    $this->reset();
+}
 public function mount(){
     $this->reset();
 }
 
     public function render()
     {
-        return view('livewire.panel.users.create')
-        ->layout('layouts.panel');
+        return view('livewire.panel.users.create')->layout('layouts.panel');
 
     }
 }

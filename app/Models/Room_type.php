@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\RoomImage; // 👈 خطی که باید اضافه شود
 
 class Room_type extends Model
 {
@@ -26,5 +27,11 @@ class Room_type extends Model
 
       return $this->hasMany(Room::class,'id');
 
+    }
+    public function images(): HasMany
+    {
+        // اتصال به مدل RoomImage و ستون room_type_id
+        return $this->hasMany(RoomImage::class, 'room_type_id')
+                    ->orderBy('image_order', 'asc');
     }
 }

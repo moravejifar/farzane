@@ -1,5 +1,5 @@
 
-    <div class="col-sm-3 ">
+    <div class="col-sm-4 ">
 
         <section class="panel">
             <header class="panel-heading">

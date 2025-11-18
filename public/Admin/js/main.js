@@ -4,22 +4,24 @@ Template:  Chondo Hotel
 Author: Hastech
 Version: 1
 Design and Developed by: Hastech
-NOTE: If you have any note put here. 
+NOTE: If you have any note put here.
 
 */
+
+
 (function($) {
     "use strict";
-    
+
     /*-------------------------------------------
     	01. jQuery MeanMenu
     --------------------------------------------- */
     jQuery('nav#dropdown').meanmenu();
-    
+
     /*-------------------------------------------
     	02. wow js active
     --------------------------------------------- */
     new WOW().init();
-	
+
 	/*---------
 	   3. Preloader
 	------------------------*/
@@ -31,7 +33,7 @@ NOTE: If you have any note put here.
 		4. Mobile menu active
 	------------------------*/
 
-	$(window).on('scroll',function() {    
+	$(window).on('scroll',function() {
 	   var scroll = $(window).scrollTop();
 	   if (scroll < 245) {
 		$(".sticky-header").removeClass("sticky");
@@ -43,8 +45,8 @@ NOTE: If you have any note put here.
 		5. Parallax active
 	----------------------*/
 	$('.header-section.static4').parallax("50%", 0.3);
-	
-    
+
+
     $('.date-picker').datepicker({
             startDate: '-3d'
     });
@@ -66,7 +68,7 @@ NOTE: If you have any note put here.
     $(".player").YTPlayer({
         showControls: false
     });
-    
+
     /*----------------------------
 	   8. search button
     ------------------------------ */
@@ -75,16 +77,16 @@ NOTE: If you have any note put here.
 	});
 	$('.close-search').on('click', function(){
 		$('.search-bar').removeClass('slideInDown').addClass('slideOutUp');
-        
+
     });
     /*----------------------------
      9. owl active
-    ------------------------------ */  
+    ------------------------------ */
     $(".slider-list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: false,
 	  slideSpeed:2000,
 	  pagination:false,
-	  navigation:true,	  
+	  navigation:true,
       items : 1,
 	  /* transitionStyle : "fade", */    /* [This code for animation ] */
 	  navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
@@ -92,12 +94,12 @@ NOTE: If you have any note put here.
 	  itemsDesktopSmall : [991,1],
 	  itemsTablet: [768,1],
 	  itemsMobile : [479,1],
-    });  
+    });
     $(".carousel-list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: false,
 	  slideSpeed:2000,
 	  pagination:true,
-	  navigation:false,	  
+	  navigation:false,
       items : 3,
 	  /* transitionStyle : "fade", */    /* [This code for animation ] */
 	  navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
@@ -105,12 +107,12 @@ NOTE: If you have any note put here.
 	  itemsDesktopSmall : [991,2],
 	  itemsTablet: [768,2],
 	  itemsMobile : [479,1],
-    });  
+    });
     $(".our-room-list, .our-news-list, .carousel_list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: false,
 	  slideSpeed:2000,
 	  pagination:true,
-	  navigation:false,	  
+	  navigation:false,
       items : 1,
 	  /* transitionStyle : "fade", */    /* [This code for animation ] */
 	  navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
@@ -120,10 +122,10 @@ NOTE: If you have any note put here.
 	  itemsMobile : [479,1],
     });
     $(".testimonial-list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: false,
 	  slideSpeed:2000,
 	  pagination:true,
-	  navigation:false,	  
+	  navigation:false,
       items : 1,
 	  transitionStyle : "backSlide",
 	  navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
@@ -133,10 +135,10 @@ NOTE: If you have any note put here.
 	  itemsMobile : [479,1],
     });
     $(".team-brand").owlCarousel({
-    autoPlay: false, 
+    autoPlay: false,
 	  slideSpeed:2000,
 	  pagination:false,
-	  navigation:false,	  
+	  navigation:false,
       items : 5,
 	  transitionStyle : "backSlide",
 	  navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
@@ -145,12 +147,12 @@ NOTE: If you have any note put here.
 	  itemsTablet: [768,3],
 	  itemsMobile : [479,2],
     });
-     
+
     $(".team_brand.style2").owlCarousel({
-      autoPlay: true, 
+      autoPlay: true,
 	  slideSpeed:2000,
 	  pagination:true,
-	  navigation:false,	  
+	  navigation:false,
       items : 5,
 	  transitionStyle : "backSlide",
 	  navigationText:["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
@@ -159,11 +161,11 @@ NOTE: If you have any note put here.
 	  itemsTablet: [768,3],
 	  itemsMobile : [479,2],
     });
-    
+
     /*------
        10. video active
     --------*/
-    
+
      $('.show_video').magnificPopup({
             disableOn: 0,
             type: 'iframe',
@@ -186,11 +188,11 @@ NOTE: If you have any note put here.
     });
     /*--------------------------
         12. Counter Up
-    ---------------------------- */	
+    ---------------------------- */
     $('.counter').counterUp({
         delay: 70,
         time: 5000
-    }); 
+    });
     /*-------------------------------------------
     	13. scrollUp jquery active
     --------------------------------------------- */
@@ -200,7 +202,7 @@ NOTE: If you have any note put here.
         scrollSpeed: 900,
         animation: 'fade'
     });
-    
+
     /*-------------------------------------------
     	14. Isotope masonry active
     --------------------------------------------- */
@@ -233,7 +235,7 @@ NOTE: If you have any note put here.
 
 			}
 	});
-    
+
 	/*----------------------
 		15. MailChimp
 	------------------------*/
@@ -252,9 +254,9 @@ NOTE: If you have any note put here.
 
 		} else if(resp.result === 'error') {
 			$('.mailchimp-error').html('' + resp.msg).fadeIn(900);
-		}  
+		}
 	};
-    
+
 })
 (jQuery);
 

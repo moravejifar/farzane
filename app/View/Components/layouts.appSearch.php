@@ -1,28 +1,4 @@
 <?php
-
-namespace App\View\Components;
-
-use Illuminate\View\Component;
-
-class layouts.appSearch extends Component
-{
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
-    public function render()
-    {
-        return view('components.layouts.app-search');
-    }
-}
+// Placeholder removed: this file name contains a dot and previously declared an invalid class name.
+// The proper component class `LayoutsAppSearch` now lives in `app/View/Components/LayoutsAppSearch.php`.
+// Keeping this file empty (no class) to avoid PSR-4 autoload warnings until you remove or rename this file on disk.

@@ -1,5 +1,5 @@
 
-    <div class="col-sm-3 ">
+    <div class="col-sm-4 ">
 
         <section class="panel">
             <header class="panel-heading">
@@ -69,6 +69,7 @@
                         {{-- <div class="form-group"> --}}
                         {{-- <div class="col-lg-offset-2 col-lg-10"> --}}
                         <button wire:click="handleCreate()" class="btn btn-danger">ذخیره</button>
+                        <button wire:click="resetInput()" class="btn btn-danger">اتاق جدید</button>
                         {{-- </div> --}}
                     </div>
 

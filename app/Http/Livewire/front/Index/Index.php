@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\front\index;
+namespace App\Http\Livewire\front\Index;
 
 // use App\Models\Facility;
 use App\Models\Facility_type;

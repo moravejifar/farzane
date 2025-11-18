@@ -213,10 +213,11 @@ return [
         'baseUserInfo.phone'             => 'شماره تماس',
         'category'                          => 'دسته بندی',
         'h_title'                          => 'عنوان',
-        'top_title'                          => 'تایتل',
+        'top_title'                          => 'سر عنوان',
         'top_text'                          => 'خلاصه متن',
         'image'                          => 'تصویر',
         'alt_image'                          => 'توضیح تصویر',
+        'user_image'                       =>'تصویر کاربر',
         'keywords'                          => 'کلمات کلیدی',
         'summary-ckeditor'                          => 'متن اصلی',
         'is_free'                          => 'وضعیت رایگان',
@@ -233,5 +234,7 @@ return [
         'data.password'                          => 'کلمه عبور',
         'data.email'                          => 'ایمیل',
         'data.name'                          => 'نام کاربر',
+        'data.lastname'                     =>'نام خانوادگی',
+
     ],
 ];

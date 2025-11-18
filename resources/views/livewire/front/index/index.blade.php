@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="section-title mb-75">
                     <h2>انواع <span>اتاق</span></h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                    {{-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p> --}}
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-12">
                         <div class="section-title mb-80">
                             <h2>انواع <span>خدمات</span></h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                            {{-- <p >There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p> --}}
                         </div>
                     </div>
                 </div>
@@ -61,8 +61,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title mb-80">
-                        <h2>our <span>Staff</span></h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                        <h2>موارد <span>دیگر</span></h2>
+                        {{-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p> --}}
                     </div>
                 </div>
             </div>

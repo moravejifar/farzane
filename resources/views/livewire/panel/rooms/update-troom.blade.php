@@ -1,7 +1,7 @@
 {{-- <div class="row">
     <div class="col-lg-12">
        <section class="panel"> --}}
-<div class="col-sm-3">
+<div class="col-sm-4">
 
     <section class="panel">
         <header class="panel-heading">
@@ -70,21 +70,81 @@
                     <small class="d-block text-danger w-100 text-center">{{ $message }} </small>
                 @enderror
 
+
                 <div class="form-group col-lg-12">
-                    <label for="exampleInputFile" class="control-label col-lg-6">دریافت تصویر</label>
+                    <label class="control-label col-lg-8 " for="exampleInputFile">دریافت تصویر</label>
 
-
-                    <input type="file" id="exampleInputFile3" wire:model="room_image" wire:change="changed">
-
-                    {{-- @if(isUploading) {} --}}
-
-                    {{-- <input type="file" id="exampleInputFile3" style="padding-right: 18px;"value="{{$room_image}}"> --}}
-                    {{-- <p class="help-block ">برای انتخاب عکس روی دکمه کلیک کنید. سایز عکس 234*123 پیکسل باشد. </p> --}}
-                    {{-- <input class="form-control" id="image" name="image" id="image" type="text" size="3px" value="{{$room_image}}" readonly  /> --}}
                 </div>
-                @error('room_image')
-                    <small class="d-block text-danger w-100 text-center">{{ $message }} </small>
-                @enderror
+                                <div class="form-group room-image-uploader">
+                    {{-- <label for="exampleInputFile" class="control-label col-lg-2">دریافت تصویر</label> --}}
+                    <div class="col-lg-12">
+                        <div class="uploader-row">
+                            <div class="avatar-preview" aria-hidden="true">
+                                @if (isset($room_image) && is_object($room_image) && method_exists($room_image, 'temporaryUrl'))
+                                    <img src="{{ $room_image->temporaryUrl() }}" alt="پیش‌نمایش تصویر">
+                                @else
+                                    <img src="/storage/images/room_image/1.jpg" alt="تصویر پیش‌فرض">
+                                @endif
+                            </div>
+
+                            <div class="uploader-actions">
+
+                                <div class="uploader-buttons-column">
+
+                                    <label class="btn-file" for="room_image_input">
+                                        انتخاب تصویر
+                                    </label>
+                                    <input id="room_image_input" type="file" wire:model="room_image" accept="image/*"
+                                        style="display:none">
+
+                                    <button type="button" class="uploader-remove"
+                                        onclick="if(confirm('آیا از حذف تصویر مطمئن هستید؟')) { @this.set('room_image', null) }"
+                                        title="حذف تصویر">
+                                        حذف
+                                    </button>
+                                </div>
+
+                                <div class="meta-box">
+                                    @php
+                                        $previewName = null;
+                                        $previewPath = null;
+
+                                        if (
+                                            isset($room_image) &&
+                                            is_object($room_image) &&
+                                            method_exists($room_image, 'getClientOriginalName')
+                                        ) {
+                                            $previewName = $room_image->getClientOriginalName();
+                                            $previewPath = '(موقتی)';
+                                        } elseif (isset($room_image) && $room_image) {
+                                            $previewName = 'فایل انتخاب‌شده';
+                                            $previewPath = '(موقتی)';
+                                        } else {
+                                            $previewName = 'تصویر پیش‌فرض';
+                                            $previewPath = '/storage/images/room_image/1.jpg';
+                                        }
+                                    @endphp
+
+                                    <div style="font-size:11px;font-weight:600;">نام:
+                                        <span style="font-weight:400;">{{ $previewName }}</span>
+                                    </div>
+                                    <div style="font-size:12px;color:#6c757d;margin-top:4px;">آدرس:
+                                        <span style="color:#495057;">{{ $previewPath }}</span>
+                                    </div>
+
+                                    <div wire:loading wire:target="room_image" class="uploader-meta text-info"
+                                        style="margin-top:4px;">
+                                        در حال آپلود...
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    @error('room_image')
+                        <small class="d-block text-danger w-100 text-right col-lg-2">{{ $message }} </small>
+                    @enderror
+                </div>
 
                 <div class="form-group col-lg-12">
                     <label class="col-lg-10 " for="description">توضیحات</label>

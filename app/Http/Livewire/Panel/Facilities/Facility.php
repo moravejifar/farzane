@@ -27,7 +27,7 @@ class Facility extends Component
     protected $rules=[
         'data.facility_id'=>'required|min:1|unique:Facility,facility_id',
         'data.facilitytype_id'=>'required',
-        'facility_image'=>'image| max:2024',
+        // 'facility_image'=>'image| max:2024',
         'data.facility_name'=>'required|min:3|unique:Facility,facility_id',
         'data.facility_loc'=>'required',
         'data.facility_alt'=>'required',
@@ -62,6 +62,7 @@ class Facility extends Component
 
         $Cfacility->save();
         $this->emit('showAlert', "مسهله با موفقیت اضافه شد.");
+        $this->update=Modelfacility::all();
 
         $this->resetInput();
     }

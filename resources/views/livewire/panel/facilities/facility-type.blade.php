@@ -5,7 +5,7 @@
     </x-slot>
 
     <!--main content start-->
-    <div class="col-sm-9">
+    <div class="col-sm-8">
         <section class="panel">
             <header class="panel-heading">
                 جدول دسته بندی
@@ -14,12 +14,12 @@
                 <thead>
                     <tr>
                         <th class="col-lg-1" style="padding-right: 40px" >شناسه </th>
-                        <th class="col-lg-2" > نوع تسهیلات</th>
-                        <th class="col-lg-2" >کپشن تصویر</th>
-                        <th class="col-lg-2" >امتیاز تسهیلات</th>
-                        <th class="col-lg-2">قیمت تسهیلات</th>
+                        <th class="col-lg-1" > نوع </th>
+                        <th class="col-lg-3" >آدرس تسهیلات</th>
+                        <th class="col-lg-1" >امتیاز </th>
+                        <th class="col-lg-1">قیمت </th>
                         {{-- <th>توضیحات</th> --}}
-                        <th class="col-lg-2">آدرس تسهیلات</th>
+                        <th class="col-lg-3">کپشن تصویر</th>
                         {{-- <th class="col-lg-2">تصویر</th> --}}
                         <th class="col-lg-3">عملیات</th>
                     </tr>
