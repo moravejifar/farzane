@@ -20,9 +20,9 @@ class Room extends Model
         'floor_number',
         'description',
     ];
-    public function room_type()
+    public function roomType()
 {
-    return $this->belongsTo(Room_type::class,'id');
+    return $this->belongsTo(RoomType::class,'id');
 
 }
 public function room_status()

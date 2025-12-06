@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-use App\Models\room_type;
+use App\Models\RoomType;
 use App\Models\room_status;
 use App\Models\Room;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,7 +26,7 @@ class RoomFactory extends Factory
         return [
             'room_id'=>$this->faker->unique()->numerify('###'),
             // 'room_id'=>$this->faker->text(5),
-            'id'=>room_type::all()->random()->id,
+            'id'=>RoomType::all()->random()->id,
             'status_id'=>room_status::all()->random()->status_id,
             'room_number'=>$this->faker->numerify('###') ,
             'floor_number'=>$this->faker->randomElements(['اول', 'دوم','سوم'])[0],

@@ -3,14 +3,15 @@
 namespace App\Http\Livewire\Panel\Rooms;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
-use App\Models\Room_type;
+use App\Models\RoomType;
 use App\Models\Room as ModelRooms;
 use Livewire\WithFileUploads;
 class Room extends Component
 {
     use WithFileUploads;
 
-    public  $selected_id,$room_name,$room_id,$roomname;
+    // public  $selected_id,$room_name,$room_id,$id;
+    public  $selected_id,$room_name,$room_id;
     public $type;
     public $isUpdating=false;
     public $isUploading=false;
@@ -94,7 +95,7 @@ class Room extends Component
         $this->data['room_id']=$record->room_id;
         $this->data['id']=$record->id;
         $this->room_id=$record->id;
-        $this->room_name=$record->room_type->room_name;
+        $this->room_name=$record->RoomType->room_name;
         // dd($this->room_name);
         $this->data['status_id']='1';
         $this->data['room_number']=$record->room_number;
@@ -130,7 +131,7 @@ class Room extends Component
     public function mount() {
         $this->roomname=ModelRooms::all();
         // $this->roomname=ModelRoom::where('room_id',$this->data['room_id']);
-        $this->type=Room_type::all();
+        $this->type=RoomType::all();
 
 
     }

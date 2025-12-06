@@ -13,7 +13,7 @@ class RemoveImageFieldsFromRoomTypeTable extends Migration
      */
     public function up()
     {
-        Schema::table('room_type', function (Blueprint $table) {
+        Schema::table('RoomType', function (Blueprint $table) {
             // 👇 نام فیلدهای شما: room_image و alt_image
             $table->dropColumn('room_image');
             $table->dropColumn('alt_image');
@@ -28,7 +28,7 @@ class RemoveImageFieldsFromRoomTypeTable extends Migration
     public function down()
     {
             //
-            Schema::table('room_type', function (Blueprint $table) {
+            Schema::table('RoomType', function (Blueprint $table) {
             // 👇 برگرداندن فیلدهای حذف شده
             $table->text('room_image')->nullable();
             $table->text('alt_image')->nullable();

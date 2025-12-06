@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Room_type;
+use App\Models\RoomType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class Room_typeFactory extends Factory
@@ -12,7 +12,7 @@ class Room_typeFactory extends Factory
      *
      * @var string
      */
-    protected $model = Room_type::class;
+    protected $model = RoomType::class;
 
     /*
      * Define the model's default state.

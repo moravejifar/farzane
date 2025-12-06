@@ -15,13 +15,16 @@ use App\Http\Livewire\Panel\PanelIndex;
 use App\Http\Livewire\Panel\Users\Index2;
 use App\Http\Livewire\Panel\Users\Create;
 use App\Http\Livewire\Panel\Users\Edit;
-use App\Http\Livewire\Panel\Rooms\RoomType;
+use App\Http\Livewire\Panel\Rooms\RoomTypeManager;
 use App\Http\Livewire\Panel\Rooms\StatusRoom;
 use App\Http\Livewire\Panel\Rooms\MRoomStatus;
 use App\Http\Livewire\Panel\Rooms\Room;
 use App\Http\Livewire\Panel\Rooms\RoomImageManager;
 use App\Http\Livewire\Panel\facilities\Facility;
 use App\Http\Livewire\Panel\facilities\FacilityType;
+use App\Http\Controllers\Panel\RoomGalleryController;
+
+
 
 // ---------------------------
 // Authentication Routes
@@ -31,6 +34,7 @@ Route::get('/register', Register::class)->name('register')->middleware('guest');
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
+
 });
 
 // ---------------------------
@@ -53,21 +57,34 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/panel/users/edit/{id}', Edit::class)->name('edit');
 
     // Rooms
-    Route::get('/panel/rooms/roomType', RoomType::class)->name('roomType');
+    Route::get('/panel/rooms/RoomTypeManager', RoomTypeManager::class)->name('roomType');
     Route::get('/panel/rooms/statusRoom', StatusRoom::class)->name('statusRoom');
     Route::get('/panel/rooms/mRoomStatus', MRoomStatus::class)->name('mRoomStatus');
     Route::get('/panel/rooms/room', Room::class)->name('room');
     Route::get('/panel/rooms/room-image-manager', RoomImageManager::class)->name('roomImageManager');
-// Route::get('/panel/rooms/room-image-manager/{roomType}', RoomImageManager::class)
+    // Route::get('/panel/rooms/room-image-manager/{roomType}', RoomImageManager::class)
     // ->name('room-image-manager');
     // Facilities
     Route::get('/panel/facilities/facility', Facility::class)->name('facility');
     Route::get('/panel/facilities/facility-type', FacilityType::class)->name('facilityType');
 
     // مسیر تست مینیمال
-// Route::get('/panel/test', function () {
-//     return view('panel.test');
-// })->middleware(['auth']);
+    // Route::get('/panel/test', function () {
+    //     return view('panel.test');
+    // })->middleware(['auth']);
+// Route::prefix('panel')->group(function() {
+//     Route::get('/room/gallery/{room}', [RoomGalleryController::class, 'index'])
+//          ->name('panel.room.gallery');
+// });
+// Route::get('/panel/room/{roomType}/gallery', [RoomGalleryController::class, 'edit'])->name('panel.room.gallery');
+// Route::post('/panel/room/{roomType}/gallery', [RoomGalleryController::class, 'update'])->name('panel.room.gallery.update');
+Route::prefix('panel/room')->name('panel.room.')->group(function() {
+    Route::get('{roomType}/gallery', [RoomGalleryController::class, 'edit'])->name('gallery');
+    Route::post('{roomType}/gallery', [RoomGalleryController::class, 'update'])->name('gallery.update');
+    Route::get('gallery/delete/{image}', [RoomGalleryController::class, 'destroy'])->name('gallery.destroy');
+});
+
+
 });
 
 // ---------------------------

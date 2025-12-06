@@ -6,30 +6,29 @@
 
         </header>
         <div class="panel-body">
-            <form class="form-horizontal" role="form" onsubmit="return false">
+            <form class="form-horizontal" role="form" wire:submit.prevent="handleCreate">
                 <div class="form-group col-lg-12">
                     <label class="col-lg-7" for="room_name">نوع اتاق</label>
                     <input class="form-control" id="roomtype" name="roomtype" type="text" size="3px"
-                        value=" نوع اتاق" wire:model="data.room_name" />
+                        wire:model="data.room_name" />
                     {{-- {{$data['room_name']}} --}}
+
                 </div>
+
                 @error('data.room_name')
                     <small class="d-block text-danger w-100 text-center">{{ $message }} </small>
                 @enderror
 
                 <div class="form-group col-lg-12">
                     <label class="col-lg-10 ">تعداد مهمان</label>
-                    <select value="1" name="max_quest" class="form-control" wire:model="data.max_quest"
-                        value="">
-                        <option selected="selected">select</option>
-                        {{-- <option value="1">1</option> --}}
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
+                    <select  name="max_quest" class="form-control" wire:model="data.max_quest">
+                        <option value="">لطفاً انتخاب کنید</option>
+                        <option >1</option>
+                        <option >2</option>
+                        <option >3</option>
+                        <option >4</option>
+                        <option >5</option>
+                        <option >6</option>
                     </select>
                 </div>
                 @error('data.max_quest')
@@ -42,7 +41,8 @@
                 <div class="form-group col-lg-12 ">
                     <label class="col-lg-10 ">تعداد تخت</label>
                     <select name="room_size" class="form-control " wire:model="data.room_size" value="">
-                        <option selected="selected">select</option>
+                        <option selected="selected"> لطفاً انتخاب کنید</option>
+
                         {{-- <option value="1">1</option> --}}
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -59,8 +59,8 @@
 
                 <div class="form-group col-lg-12">
                     <label class="col-lg-8" for="price">قیمت اتاق</label>
-                    <input class=" form-control" id="price" name="price" type="text" size="3px"
-                        value="قیمت اتاق" wire:model="data.room_priceusd" />
+                    <input class="form-control" id="roomprice" name="roomprice" type="text" size="3px"
+                        wire:model="data.room_priceusd" />
                 </div>
                 @error('data.room_priceusd')
                     <small class="d-block text-danger w-100 text-center">{{ $message }} </small>
@@ -68,139 +68,14 @@
 
                 <div class="form-group col-lg-12">
                     <label class="control-label col-lg-8 " for="altimage">کپشن تصویر</label>
-                    <input class="form-control" id="altimage" name="altimage" type="text" value="کپشن تصویر"
+                    <input class="form-control" id="altimage" name="altimage" type="text"
                         wire:model="data.alt_image" />
                 </div>
-                {{-- @error('data.alt_image')
-                    <small class="d-block text-danger w-100 text-center">{{ $message }} </small>
-                    @enderror --}}
-
-                {{-- <div class="form-group col-lg-12">
-                        <label for="exampleInputFile" class="control-label col-lg-8">دریافت تصویر</label>
-                        <input type="file" id="exampleInputFile3" style="padding-right: 5px;" wire:model="room_image">
-                    </div> --}}
-
-{{-- <style>
-    /* متغیر برای همسان‌سازی ارتفاع اصلی */
-    :root {
-        --main-height: 45px;
-        --gap-small: 3px;
-    }
-
-    /* کانتینر کلی فرم آپلود */
-    .room-image-uploader {
-        width: 100% !important;
-        margin-top: 12px;
-        box-sizing: border-box;
-    }
-
-    /* پوشش‌دهنده محتوا */
-    .uploader-content-wrapper {
-        width: 100%;
-    }
-
-    /* ردیف آپلودر */
-    .room-image-uploader .uploader-row {
-        display: flex;
-        align-items: center; /* این حفظ می‌شود تا آیتم‌ها در مرکز عمودی باشند */
-        gap: 6px;
-        padding: 4px 5px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        background-color: #fafafa;
-        box-sizing: border-box;
-        flex-wrap: nowrap !important;
-        direction: rtl;
-        width: 100% !important;
-        flex: 0 0 auto;
-        min-width: 0;
-    }
-
-    /* تصویر پیش‌نمایش (بدون تغییر) */
-    .room-image-uploader .avatar-preview {
-        width: var(--main-height); height: var(--main-height); flex-shrink: 0;
-        border-radius: 6px; border: 1px solid #ccc; background: #fff;
-        display: flex; align-items: center; justify-content: center; overflow: hidden;
-    }
-    .room-image-uploader .avatar-preview img {
-        width: 100%; height: 100%; object-fit: cover;
-    }
-
-    /* 👇 بخش دکمه‌ها و meta-box (والد) */
-    .room-image-uploader .uploader-actions {
-        display: flex;
-        align-items: center;
-        /* 👇 تغییر: فاصله را کم می‌کنیم و دکمه‌ها را فشرده نگه می‌داریم */
-        gap: 3px;
-        flex-wrap: nowrap;
-        flex: 1 1 100% !important;
-        min-width: 0;
-    }
-
-    /* 👇 ستون دکمه‌ها سمت راست: جلوگیری از کشیده شدن دکمه‌ها */
-    .room-image-uploader .uploader-buttons-column {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gap-small);
-        /* 👇 تغییر کلیدی: جلوگیری از رشد و حفظ اندازه اصلی */
-        flex: 0 0 auto;
-        flex-shrink: 0;
-        min-height: var(--main-height);
-        justify-content: center;
-    }
-
-    /* دکمه‌ها: تضمین عرض ثابت */
-    .room-image-uploader .btn-file,
-    .room-image-uploader .uploader-remove {
-        font-size: 10px; padding: 12px 3px;
-        min-width: 60px; /* حداقل عرض حفظ می‌شود */
-        width: 100%; /* دکمه‌ها عرض والد خود را پر می‌کنند */
-        height: 25px;
-        border-radius: 4px; border: none; color: #fff; cursor: pointer;
-        display: inline-flex; align-items: center; justify-content: center;
-        flex-grow: 0; /* دکمه‌ها نباید رشد کنند */
-    }
-    /* ... استایل‌های رنگی دکمه‌ها بدون تغییر ... */
-
-    /* 👇 کادر اطلاعات: تضمین رشد و پر کردن تمام فضای باقی‌مانده */
-    .room-image-uploader .meta-box {
-        /* 👇 تغییر کلیدی: رشد کامل (بیشترین اولویت) */
-        flex: 5 1 80px !important;
-        min-width: 80px !important;
-        max-width: none; /* حذف max-width برای امکان کشیدگی */
-
-        height: var(--main-height);
-        padding: 2px 4px;
-        font-size: 9px;
-        line-height: 1.1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1px;
-
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-
-        border: 1px solid #dcdcdc;
-        border-radius: 6px;
-        background: #fff;
-        box-sizing: border-box;
-    }
-
-    /* تنظیمات خطوط متن داخل کادر کوچک (بدون تغییر) */
-    .room-image-uploader .meta-box > div {
-        overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
-        width: 100%; font-size: 10px !important; line-height: 1.2 !important;
-    }
-
-    /* ... سایر استایل‌ها بدون تغییر ... */
-</style> --}}
 
 
 
                 <div class="form-group col-lg-12">
-                    <label class="control-label col-lg-8 " for="exampleInputFile">دریافت تصویر</label>
+                    <label class="control-label col-lg-8 " for="exampleInputFile">دریافت تصویراصلی</label>
 
                 </div>
 
@@ -275,7 +150,23 @@
                     @enderror
                 </div>
 
+                {{-- <div class="form-group col-lg-12">
+                    <label class="control-label col-lg-8 " for="exampleInputFile">دریافت البوم تصاویر</label>
+                    <button type="button" class="btn btn-info btn-block" wire:click="openGalleryModal({{$selected_id}})">
+                        <i class="fa fa-picture-o"></i> مدیریت آلبوم اتاق
+                    </button>
+                </div> --}}
+                <button
+    type="button"
+    class="btn btn-info btn-block"
+    wire:click="openGalleryModal({{ $row->id }})"
+>
+    <i class="fa fa-picture-o"></i> مدیریت آلبوم اتاق
+</button>
 
+{{-- <button wire:click="testButton">تست</button> --}}
+
+{{-- <button wire:click="openGalleryModal">مدیریت آلبوم</button> --}}
 
 
 
@@ -295,7 +186,8 @@
 
                 <div class="form-group col-lg-12 ">
                     {{-- <div class="col-lg-offset-2 col-lg-10"> --}}
-                    <button wire:click="handleCreate()" class="btn btn-danger">ذخیره</button>
+                    {{-- <button wire:click="handleCreate()" class="btn btn-danger">ذخیره</button> --}}
+                    <button type="submit" class="btn btn-danger">ذخیره</button>
                     {{-- </div> --}}
                 </div>
 

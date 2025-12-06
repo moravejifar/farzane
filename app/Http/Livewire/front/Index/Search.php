@@ -4,7 +4,7 @@ namespace App\Http\Livewire\front\Index;
 
 use Livewire\Component;
 use App\Models\Facility_type;
-use App\Models\Room_type;
+use App\Models\RoomType;
 
 class Search extends Component
 {
@@ -27,7 +27,7 @@ class Search extends Component
     public function mount($catId, $char = "")
     {
         // dd($catId,$char);
-        $this->newRooms = Room_type::all();
+        $this->newRooms = RoomType::all();
         $this->newFacility_type = Facility_type::all();
         $this->newFacility = Facility_type::all();
         $this->catId = $catId;
@@ -40,7 +40,7 @@ class Search extends Component
 
         if ($this->catId == 0) {
 
-            $result = Room_type::where('room_name', 'like', '%' . $this->char . '%')
+            $result = RoomType::where('room_name', 'like', '%' . $this->char . '%')
                 ->orWhere('max_quest', 'like', '%' . $this->char . '%')
                 ->orWhere('alt_image', 'like', '%' . $this->char . '%')
                 ->orWhere('room_size', 'like', '%' . $this->char . '%')
@@ -75,7 +75,7 @@ class Search extends Component
 
         } else {
 
-            $result = Room_type::where([
+            $result = RoomType::where([
                 ['id', $this->catId],
                 ['room_name', 'like', '%' . $this->char . '%'],
             ])->orWhere([

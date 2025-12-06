@@ -51,7 +51,9 @@
                         </a>
                         <ul class="dropdown-menu extended tasks-bar">
                             <div class="notify-arrow notify-arrow-green"></div>
-                            <li><p class="green">شما 6 برنامه در دست کار دارید</p></li>
+                            <li>
+                                <p class="green">شما 6 برنامه در دست کار دارید</p>
+                            </li>
                             <!-- task items -->
                         </ul>
                     </li>
@@ -63,7 +65,9 @@
                         </a>
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-red"></div>
-                            <li><p class="red">شما 5 پیام جدید دارید</p></li>
+                            <li>
+                                <p class="red">شما 5 پیام جدید دارید</p>
+                            </li>
                             <!-- messages -->
                         </ul>
                     </li>
@@ -75,7 +79,9 @@
                         </a>
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-yellow"></div>
-                            <li><p class="yellow">شما 7 اعلام جدید دارید</p></li>
+                            <li>
+                                <p class="yellow">شما 7 اعلام جدید دارید</p>
+                            </li>
                             <!-- notifications items -->
                         </ul>
                     </li>
@@ -156,7 +162,8 @@
                             <li><a href="{{ route('facility') }}">ایجاد تسهیلات جدید</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('site') }}"><i class="icon-user"></i><span>صفحه ورود به سایت</span></a></li>
+                    <li><a href="{{ route('site') }}"><i class="icon-user"></i><span>صفحه ورود به سایت</span></a>
+                    </li>
                 </ul>
             </div>
         </aside>
@@ -165,8 +172,8 @@
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-                {{ $slot }}
-                @livewireScripts
+                @yield('content')
+                {{-- @livewireScripts --}}
             </section>
         </section>
         <!--main content end-->
@@ -208,26 +215,27 @@
         };
     </script>
     <script src="{{ asset('/jdp/jalalidatepicker.js') }}"></script>
-<link href="{{ asset('/jdp/jalalidatepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('/jdp/jalalidatepicker.css') }}" rel="stylesheet">
 
     <script>
-document.addEventListener("DOMContentLoaded", function() {
-    if (typeof jalaliDatepicker !== 'undefined') {
-        jalaliDatepicker.startWatch();
-    } else {
-        console.error("jalaliDatepicker not loaded!");
-    }
-});
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof jalaliDatepicker !== 'undefined') {
+                jalaliDatepicker.startWatch();
+            } else {
+                console.error("jalaliDatepicker not loaded!");
+            }
+        });
 
-document.addEventListener('livewire:load', function () {
-    jalaliDatepicker.startWatch();
-});
-document.addEventListener('livewire:update', function () {
-    jalaliDatepicker.startWatch();
-});
-</script>
+        document.addEventListener('livewire:load', function() {
+            jalaliDatepicker.startWatch();
+        });
+        document.addEventListener('livewire:update', function() {
+            jalaliDatepicker.startWatch();
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
+    @yield('scripts')
 </body>
+
 </html>

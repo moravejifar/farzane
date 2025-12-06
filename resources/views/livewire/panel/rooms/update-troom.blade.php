@@ -11,8 +11,8 @@
             <form class="form-horizontal" role="form" onsubmit="return  false">
                 <div class="form-group col-lg-12">
                     <label class="col-lg-7" for="room_name">نوع اتاق</label>
-                    <input class="form-control" id="roomtype" name="roomtype" type="text" size="3px" value=" نوع اتاق"
-                        wire:model="data.room_name" />
+                    <input class="form-control" id="roomtype" name="roomtype" type="text" size="3px"
+                        value=" نوع اتاق" wire:model="data.room_name" />
                     {{-- {{$data['room_name']}} --}}
                 </div>
                 @error('room_name')
@@ -20,7 +20,8 @@
                 @enderror
                 <div class="form-group col-lg-12">
                     <label class="col-lg-10 ">تعداد مهمان</label>
-                    <select value="1" name="max_quest" class="form-control" wire:model="data.max_quest" value="">
+                    <select value="1" name="max_quest" class="form-control" wire:model="data.max_quest"
+                        value="">
                         <option selected="selected">select</option>
                         {{-- <option value="1">1</option> --}}
                         <option value="2">2</option>
@@ -54,8 +55,8 @@
 
                 <div class="form-group col-lg-12">
                     <label class="col-lg-8" for="price">قیمت اتاق</label>
-                    <input class=" form-control" id="price" name="price" type="text" size="3px" value="قیمت اتاق"
-                        wire:model="data.room_priceusd" />
+                    <input class=" form-control" id="price" name="price" type="text" size="3px"
+                        value="قیمت اتاق" wire:model="data.room_priceusd" />
                 </div>
                 @error('data.room_priceusd')
                     <small class="d-block text-danger w-100 text-center">{{ $message }} </small>
@@ -75,7 +76,7 @@
                     <label class="control-label col-lg-8 " for="exampleInputFile">دریافت تصویر</label>
 
                 </div>
-                                <div class="form-group room-image-uploader">
+                <div class="form-group room-image-uploader">
                     {{-- <label for="exampleInputFile" class="control-label col-lg-2">دریافت تصویر</label> --}}
                     <div class="col-lg-12">
                         <div class="uploader-row">
@@ -145,6 +146,34 @@
                         <small class="d-block text-danger w-100 text-right col-lg-2">{{ $message }} </small>
                     @enderror
                 </div>
+                {{-- <div class="form-group col-lg-12">
+                    <label class="control-label col-lg-8 " for="exampleInputFile">دریافت البوم تصاویر</label>
+                    <button type="button" class="btn btn-info btn-block" wire:click="openGalleryModal">
+                        <i class="fa fa-picture-o"></i> مدیریت آلبوم اتاق
+                    </button>
+                </div> --}}
+                {{-- <div class="form-group col-lg-12">
+                    <label class="control-label col-lg-8 " for="exampleInputFile">دریافت البوم تصاویر</label>
+                    <button type="button" class="btn btn-info btn-block"
+                        wire:click="wire:click="openGalleryModal({{ $selected_id }})"">
+                        <i class="fa fa-picture-o"></i> مدیریت آلبوم اتاق
+                    </button>
+
+                </div> --}}
+                {{-- <button type="button" class="btn btn-info btn-block"
+                    wire:click="openGalleryModal({{ $this->selected_id }})">
+                    <i class="fa fa-picture-o"></i> مدیریت آلبوم اتاق
+                </button> --}}
+                <a href="{{ route('panel.room.gallery', $row->id) }}" class="btn btn-primary btn-xs">
+                    مدیریت آلبوم
+                </a>
+                {{-- <button type="button" wire:click="openGalleryModal({{ $selected_id }})" class="btn btn-info">
+    مدیریت گالری
+</button> --}}
+
+                {{-- <button wire:click="testButton">تست</button> --}}
+                {{-- <button wire:click="openGalleryModal">مدیریت آلبوم</button> --}}
+
 
                 <div class="form-group col-lg-12">
                     <label class="col-lg-10 " for="description">توضیحات</label>
@@ -156,13 +185,39 @@
                     <small class="d-block text-danger w-100 text-center">{{ $message }} </small>
                 @enderror
 
-                <div class="form-group col-lg-12">
+                {{-- <div class="form-group col-lg-12">
 
-                    {{-- <div class="form-group"> --}}
-                    {{-- <div class="col-lg-offset-2 col-lg-10"> --}}
                     <button wire:click="handleUpdate()" class="btn btn-danger">ویرایش</button>
-                    {{-- </div> --}}
-                </div>
+                </div> --}}
+                {{-- <div class="form-group col-lg-12"> --}}
+                {{-- اگر در حال ویرایش هستیم، handleUpdate را فراخوانی کن؛ در غیر این صورت handleCreate را --}}
+                {{-- <button wire:click="{{ $isUpdating ? 'handleUpdate' : 'handleCreate' }}" --}}
+                {{-- class="btn {{ $isUpdating ? 'btn-success' : 'btn-primary' }}"> --}}
+                {{-- متن دکمه را بر اساس وضعیت تغییر بده --}}
+                {{-- {{ $isUpdating ? 'ثبت ویرایش نهایی' : 'ایجاد دسته بندی جدید' }} --}}
+                {{-- </button> --}}
+                @if ($isUpdating)
+                    <button wire:click="handleUpdate" class="btn btn-success">
+                        ثبت ویرایش نهایی
+                    </button>
+                @else
+                    <button wire:click="handleCreate" class="btn btn-primary">
+                        ایجاد دسته بندی جدید
+                    </button>
+                @endif
+
+
+                {{-- اضافه کردن دکمه لغو در حالت ویرایش --}}
+                @if ($isUpdating)
+                    <button wire:click="resetInputAndCancelUpdate" class="btn btn-danger">
+                        لغو ویرایش
+                    </button>
+                @endif
+        </div>
+        {{-- <button type="button" class="btn btn-success btn-xs"
+        wire:click="simpleTest({{ $row->id }})">
+    <i class="icon-check"></i> تست ساده
+</button> --}}
 
         </form>
 </div>

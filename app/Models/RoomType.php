@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\RoomImage; // 👈 خطی که باید اضافه شود
 
-class Room_type extends Model
+
+class RoomType extends Model
 {
     use HasFactory;
 
@@ -14,14 +15,15 @@ class Room_type extends Model
         'id',
         'room_name',
         'max_quest',
-        'alt_image',
+        // 'alt_image',
         'room_size',
         'room_priceusd',
-        'room_image',
+        // 'room_image',
         'description',
     ];
     public $timestamps = false;
     protected $table = 'room_type';
+
     public function room()
     {
 
@@ -34,4 +36,5 @@ class Room_type extends Model
         return $this->hasMany(RoomImage::class, 'room_type_id')
                     ->orderBy('image_order', 'asc');
     }
+
 }

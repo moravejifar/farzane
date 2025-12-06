@@ -13,7 +13,7 @@ class CreateRoomTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('room_type', function (Blueprint $table) {
+        Schema::create('RoomType', function (Blueprint $table) {
             $table->increments('id')->index();
             // $table->string('id')->index();
             $table->string('room_name')->nullable();
@@ -34,6 +34,6 @@ class CreateRoomTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('room_type');
+        Schema::dropIfExists('RoomType');
     }
 }

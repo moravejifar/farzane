@@ -4526,3 +4526,64 @@ body {
 }
 
 /* ... سایر استایل‌ها بدون تغییر ... */
+.room-image-uploader {
+    margin-bottom: 15px;
+}
+
+.uploader-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 10px;
+    background: #fafafa;
+}
+
+.avatar-preview img {
+    width: 120px;
+    height: 120px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+.uploader-actions {
+    display: flex;
+    gap: 15px;
+    flex: 1;
+}
+
+.uploader-buttons-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn-file {
+    background: #007bff;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.uploader-remove {
+    background: #dc3545;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.meta-box {
+    font-size: 12px;
+    min-width: 120px;
+}
+
+.meta-box input[type="text"] {
+    width: 100%;
+    margin-top: 5px;
+}
