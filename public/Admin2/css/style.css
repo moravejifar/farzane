@@ -4526,64 +4526,74 @@ body {
 }
 
 /* ... سایر استایل‌ها بدون تغییر ... */
-.room-image-uploader {
-    margin-bottom: 15px;
+
+/*از اینجا شروع می شود
+    /* حذف تأثیر Bootstrap بر روی المان‌های گالری */
+    #previewContainer * {
+        float: none !important;
+        position: static !important;
+    }
+
+    /* جلوگیری از اعمال استایل‌های Bootstrap grid */
+    #previewContainer .row,
+    #previewContainer .col-*,
+    #previewContainer [class*="col-"] {
+        width: 20% !important;
+        min-width: 250px !important;
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+        box-sizing: border-box !important;
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+
+    /* غیرفعال کردن سیستم grid Bootstrap */
+    #previewContainer {
+        display: flex !important;
+        flex-wrap: wrap !important;
+    }
+    /* اضافه کردن به استایل کلی */
+input[name="captions[]"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 13px;
+    transition: border-color 0.15s ease-in-out;
 }
 
-.uploader-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    border: 1px solid #ddd;
-    padding: 12px;
-    border-radius: 10px;
-    background: #fafafa;
+input[name="captions[]"]:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
-.avatar-preview img {
-    width: 120px;
-    height: 120px;
-    border-radius: 6px;
-    object-fit: cover;
-    border: 1px solid #ccc;
-}
-
-.uploader-actions {
-    display: flex;
-    gap: 15px;
-    flex: 1;
-}
-
-.uploader-buttons-column {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.btn-file {
-    background: #007bff;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
+.gallery-btn {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.2s ease;
 }
 
-.uploader-remove {
+/* .gallery-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-change {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-delete {
     background: #dc3545;
     color: white;
-    padding: 5px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    display: inline-block;
-}
+} */
 
-.meta-box {
-    font-size: 12px;
-    min-width: 120px;
-}
-
-.meta-box input[type="text"] {
-    width: 100%;
-    margin-top: 5px;
-}
