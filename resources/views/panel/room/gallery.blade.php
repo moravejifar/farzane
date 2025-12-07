@@ -2,7 +2,37 @@
 
 @section('content')
     <div class="container">
-        <h2>گالری تصاویر اتاق: {{ $roomType->room_name }}</h2>
+        <header class="panel-heading">
+            <div class="tab__box">
+                <div class="tab__items">
+                    <a class="tab__item is-active" href="{{ route('panel') }}">پیشخوان</a>|
+                    <a class="tab__item is-active" href="{{ route('create') }}">اتاق ها</a>|
+                    <a class="tab__item" href="{{ route('create') }}">ایجاد دسته اتاق ها</a>|
+                    <a class="tab__item" href="{{ route('create') }}">ویرایش گالری تصاویر اتاق ها</a>
+                    <p class="tab__item">گالری تصاویر اتاق: {{ $roomType->room_name }}</p>
+                </div>
+            </div>
+            <!-- این استایل رو به تگ <head> اضافه کنید -->
+{{-- <style>
+    html, body {
+        height: 100%;
+        overflow-y: auto !important;
+        position: relative;
+    }
+
+    /* برای کانتینر اصلی */
+    #previewContainer {
+        min-height: 100px;
+        overflow: visible !important;
+    }
+
+    /* برای wrapper اصلی */
+    .wrapper {
+        overflow: visible !important;
+    }
+</style> --}}
+
+        </header>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -17,7 +47,8 @@
             <!-- تصاویر جدید -->
             <div class="mb-4">
                 <label class="form-label">انتخاب تصاویر جدید (چندگانه):</label>
-                <input type="file" id="newImagesInput" name="new_images[]" multiple class="form-control" accept="image/*">
+                <input type="file" id="newImagesInput" name="new_images[]" multiple class="form-control"
+                    accept="image/*">
                 <div id="previewContainer" class="row mt-3"></div>
             </div>
 
@@ -59,12 +90,12 @@
     </div>
 @endsection
 @section('scripts')
-<script>
-    document.getElementById('newImagesInput').addEventListener('change', function(event) {
-        const previewContainer = document.getElementById('previewContainer');
+    <script>
+        document.getElementById('newImagesInput').addEventListener('change', function(event) {
+            const previewContainer = document.getElementById('previewContainer');
 
-        previewContainer.className = "";
-        previewContainer.style.cssText = `
+            previewContainer.className = "";
+            previewContainer.style.cssText = `
         display: flex;
         flex-wrap: wrap;
         gap: 15px;
@@ -74,22 +105,22 @@
         width: 100%;
     `;
 
-        const files = event.target.files;
-        if (files.length === 0) return;
+            const files = event.target.files;
+            if (files.length === 0) return;
 
-        const cardWidth = "24%";
-        const imageHeight = "180px";
-        const cardPadding = "12px";
-        const minCardWidth = "220px";
+            const cardWidth = "23%";
+            const imageHeight = "180px";
+            const cardPadding = "12px";
+            const minCardWidth = "220px";
 
-        [...files].forEach((file) => {
-            const reader = new FileReader();
+            [...files].forEach((file) => {
+                const reader = new FileReader();
 
-            reader.onload = function(e) {
-                const col = document.createElement('div');
+                reader.onload = function(e) {
+                    const col = document.createElement('div');
 
-                col.className = "";
-                col.style.cssText = `
+                    col.className = "";
+                    col.style.cssText = `
                 width: ${cardWidth} !important;
                 min-width: ${minCardWidth} !important;
                 flex: 0 0 ${cardWidth} !important;
@@ -98,7 +129,7 @@
                 padding: 0 !important;
             `;
 
-                col.innerHTML = `
+                    col.innerHTML = `
                 <div style="
                     border: 1px solid #ddd;
                     border-radius: 8px;
@@ -249,61 +280,69 @@
                 </div>
             `;
 
-                // 🛠️ برای امکان تغییر تصویر
-                const replaceInput = col.querySelector('.replace-input');
-                replaceInput.addEventListener('change', function(e) {
-                    const newFile = e.target.files[0];
-                    if (!newFile) return;
+                    // 🛠️ برای امکان تغییر تصویر
+                    const replaceInput = col.querySelector('.replace-input');
+                    replaceInput.addEventListener('change', function(e) {
+                        const newFile = e.target.files[0];
+                        if (!newFile) return;
 
-                    // بررسی نوع فایل
-                    if (!newFile.type.startsWith('image/')) {
-                        alert('لطفاً فقط فایل تصویری انتخاب کنید!');
-                        this.value = '';
-                        return;
-                    }
+                        // بررسی نوع فایل
+                        if (!newFile.type.startsWith('image/')) {
+                            alert('لطفاً فقط فایل تصویری انتخاب کنید!');
+                            this.value = '';
+                            return;
+                        }
 
-                    const reader2 = new FileReader();
-                    reader2.onload = function(ev) {
-                        // آپدیت تصویر
-                        col.querySelector('img').src = ev.target.result;
+                        const reader2 = new FileReader();
+                        reader2.onload = function(ev) {
+                            // آپدیت تصویر
+                            col.querySelector('img').src = ev.target.result;
 
-                        // آپدیت نام فایل
-                        const nameSpan = col.querySelector('div[style*="display: flex"] span');
-                        nameSpan.textContent = ` ${newFile.name.substring(0, 25)}${newFile.name.length > 25 ? '...' : ''}`;
+                            // آپدیت نام فایل
+                            const nameSpan = col.querySelector(
+                                'div[style*="display: flex"] span');
+                            nameSpan.textContent =
+                                ` ${newFile.name.substring(0, 25)}${newFile.name.length > 25 ? '...' : ''}`;
 
-                        // آپدیت حجم فایل
-                        const sizeSpan = col.querySelector('div[style*="color:#777"] span');
-                        sizeSpan.textContent = ` ${(newFile.size/1024).toFixed(1)} KB`;
-                    };
+                            // آپدیت حجم فایل
+                            const sizeSpan = col.querySelector(
+                                'div[style*="color:#777"] span');
+                            sizeSpan.textContent = ` ${(newFile.size/1024).toFixed(1)} KB`;
+                        };
 
-                    reader2.readAsDataURL(newFile);
-                });
+                        reader2.readAsDataURL(newFile);
+                    });
 
-                // 🗑️ برای دکمه حذف با Confirm
-                const deleteBtn = col.querySelector('.delete-btn');
-                deleteBtn.addEventListener('click', function() {
-                    // نمایش پیام تایید
-                    if (confirm('آیا مطمئن هستید که می‌خواهید این تصویر را حذف کنید؟\nاین عمل قابل بازگشت نیست.')) {
-                        // اگر کاربر Ok کلیک کرد، کارت را حذف کن
-                        col.remove();
+                    // 🗑️ برای دکمه حذف با Confirm
+                    const deleteBtn = col.querySelector('.delete-btn');
+                    deleteBtn.addEventListener('click', function() {
+                        // نمایش پیام تایید
+                        if (confirm(
+                                'آیا مطمئن هستید که می‌خواهید این تصویر را حذف کنید؟\nاین عمل قابل بازگشت نیست.'
+                            )) {
+                            // اگر کاربر Ok کلیک کرد، کارت را حذف کن
+                            col.remove();
 
-                        // پیام موفقیت (اختیاری)
-                        setTimeout(() => {
-                            alert('تصویر با موفقیت حذف شد.');
-                        }, 300);
-                    } else {
-                        // اگر کاربر Cancel کلیک کرد
-                        console.log('کاربر از حذف انصراف داد.');
-                    }
-                });
+                            // پیام موفقیت (اختیاری)
+                            setTimeout(() => {
+                                alert('تصویر با موفقیت حذف شد.');
+                            }, 300);
+                        } else {
+                            // اگر کاربر Cancel کلیک کرد
+                            console.log('کاربر از حذف انصراف داد.');
+                        }
+                    });
 
-                previewContainer.appendChild(col);
-            };
+                    previewContainer.appendChild(col);
+                };
 
-            reader.readAsDataURL(file);
+                reader.readAsDataURL(file);
+            });
+
+            event.target.value = '';
         });
+    </script>
+    <script>
 
-        event.target.value = '';
-    });
-</script>
+        </script>
 @endsection
