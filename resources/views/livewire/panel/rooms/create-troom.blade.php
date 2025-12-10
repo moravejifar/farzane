@@ -159,8 +159,8 @@
                 <button
     type="button"
     class="btn btn-info btn-block"
-    wire:click="openGalleryModal({{ $row->id }})"
->
+    wire:click="openGalleryModal({{ $row->id }})">
+
     <i class="fa fa-picture-o"></i> مدیریت آلبوم اتاق
 </button>
 

@@ -73,8 +73,9 @@
 
 
 
+@if($showGalleryModal)
 
-    <div x-data="{ open: @entangle('showGalleryModal') }">
+    <div x-data="{ open: @entangle('showGalleryModal') }" >
 
         <!-- پس‌زمینه مودال -->
         <div x-show="open" x-transition.opacity class="livewire-modal-backdrop"
@@ -211,11 +212,9 @@
 
     </div>
 
-
+@endif
 
 </div>
-
-
 
 {{-- <script>
     window.addEventListener('openGalleryModal', event => {

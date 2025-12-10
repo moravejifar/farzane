@@ -13,7 +13,7 @@
                 </div>
             </div>
             <!-- این استایل رو به تگ <head> اضافه کنید -->
-{{-- <style>
+<style>
     html, body {
         height: 100%;
         overflow-y: auto !important;
@@ -30,7 +30,8 @@
     .wrapper {
         overflow: visible !important;
     }
-</style> --}}
+</style>
+
 
         </header>
 
@@ -342,7 +343,5 @@
             event.target.value = '';
         });
     </script>
-    <script>
 
-        </script>
 @endsection
